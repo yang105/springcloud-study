@@ -1,0 +1,37 @@
+server:
+  port: 11000
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/yang105/spring-cloud-study
+          search-paths: config-repo
+    bus:
+      enabled: true
+      trace:
+        enabled: true
+  rabbitmq:
+    host: 192.168.1.115
+    port: 5672
+    username: zhangyang
+    password: zhangyang
+
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin@eureka1:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
+
+
+
+

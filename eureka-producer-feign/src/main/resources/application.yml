@@ -1,0 +1,48 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: eureka-consumer-feign-hystrix
+  sleuth:
+    web:
+      enabled: true
+    sampler:
+      probability: 1.0
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin@eureka1:8761/eureka/
+  instance:
+    lease-renewal-interval-in-seconds: 10
+    health-check-url-path: /actuator/health
+
+feign:
+  hystrix:
+    enabled: true
+  client:
+    config:
+      default:
+        connectTimeOut: 500
+        readTimeout: 2000
+
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+
+
+
+hystrix:
+  command:
+    default:
+      isolation:
+        thread:
+          timeoutInMilliseconds: 12000

@@ -1,0 +1,27 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: spirngcloud-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true    #设置通过小写服务名去访问
+  sleuth:
+    web:
+      enabled: true
+    sampler:
+      probability: 1.0
+  zipkin:
+    base-url: http://192.168.1.115:9411/
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin@eureka1:8761/eureka/
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
